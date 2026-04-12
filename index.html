@@ -2,80 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satvik | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Our Love Story</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(255,255,255,0.8);
+      animation: glow 2s infinite alternate;
+    }
+
+    .couple-pic {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 8px solid white;
+      box-shadow: 0 0 40px rgba(255,255,255,0.7);
+      animation: pulse 3s infinite;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 20px;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff6b6b;
+      font-size: 30px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes glow {
+      from {text-shadow: 0 0 10px #fff;}
+      to {text-shadow: 0 0 30px #ff6b6b;}
+    }
+
+    @keyframes pulse {
+      0% {transform: scale(1);}
+      50% {transform: scale(1.05);}
+      100% {transform: scale(1);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes floatUp {
+      0% {transform: translateY(100vh) scale(0.5); opacity: 0;}
+      50% {opacity: 1;}
+      100% {transform: translateY(-10vh) scale(1); opacity: 0;}
+    }
+  </style>
 </head>
 <body>
-  <!-- Hero -->
-  <header class="hero">
-    <nav>
-      <h1 class="logo">Satvik</h1>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#timeline">Timeline</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="hero-content">
-      <h2 class="typing">Innovator | Coder | Dreamer</h2>
-      <p>Crafting futuristic ideas with technology.</p>
-      <a href="#projects" class="btn">Explore My Work</a>
-    </div>
-  </header>
+  <div class="container">
+    <h1>Forever Together ❤️</h1>
+    <!-- Replace 'couple.jpg' with your actual couple photo -->
+    <img src="couple.jpg" alt="Couple Photo" class="couple-pic">
+    <p>You are my today and all of my tomorrows.</p>
+  </div>
 
-  <!-- About -->
-  <section id="about" class="section fade-in">
-    <h2>About Me</h2>
-    <p>I’m a B.Tech student passionate about sci‑fi inspired projects, coding contests, and collaborative innovation.</p>
-  </section>
+  <script>
+    // Generate floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
 
-  <!-- Projects -->
-  <section id="projects" class="section fade-in">
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Projection Keyboard</h3>
-        <p>Raspberry Pi powered holographic keyboard prototype.</p>
-      </div>
-      <div class="card">
-        <h3>Algorithm Library</h3>
-        <p>Notebook‑style cheat sheets for contest algorithms.</p>
-      </div>
-      <div class="card">
-        <h3>AR Interfaces</h3>
-        <p>Exploring augmented reality for futuristic UI design.</p>
-      </div>
-    </div>
-  </section>
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
 
-  <!-- Timeline -->
-  <section id="timeline" class="section fade-in">
-    <h2>My Journey</h2>
-    <div class="timeline">
-      <div class="timeline-item">2024 – Started B.Tech at PSIT Kanpur</div>
-      <div class="timeline-item">2025 – Built Projection Keyboard Prototype</div>
-      <div class="timeline-item">2026 – Preparing for Techkriti & Hackathons</div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section fade-in">
-    <h2>Contact Me</h2>
-    <form id="contactForm">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn">Send</button>
-    </form>
-    <p id="formStatus"></p>
-  </section>
-
-  <footer>
-    <p>&copy; 2026 Satvik | Futuristic Portfolio</p>
-  </footer>
-
-  <script src="script.js"></script>
+    setInterval(createHeart, 800);
+  </script>
 </body>
 </html>
